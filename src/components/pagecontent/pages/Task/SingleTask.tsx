@@ -4,7 +4,6 @@ import moment from 'moment'
 import { FaTrash, FaEdit, FaCheck } from 'react-icons/fa'
 import { changeStatus, moveToTrash, updateTask } from '../../../../services'
 import { message, Input } from 'antd'
-import { set } from 'lodash'
 
 interface Props {
     task: TaskModel

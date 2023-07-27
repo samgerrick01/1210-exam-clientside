@@ -4,11 +4,10 @@ import SingleTask from './SingleTask'
 
 interface Props {
     trash: TaskModel[]
-    handleAllTrash: () => Promise<void>
     search: string
 }
 
-const TaskList: FC<Props> = ({ trash, handleAllTrash, search }) => {
+const TaskList: FC<Props> = ({ trash, search }) => {
     return (
         <div>
             {trash
@@ -16,11 +15,7 @@ const TaskList: FC<Props> = ({ trash, handleAllTrash, search }) => {
                     data.task_name.toLowerCase().includes(search.toLowerCase()),
                 )
                 .map((item: TaskModel) => (
-                    <SingleTask
-                        item={item}
-                        key={item.id}
-                        handleAllTrash={handleAllTrash}
-                    />
+                    <SingleTask item={item} key={item.id} />
                 ))}
         </div>
     )

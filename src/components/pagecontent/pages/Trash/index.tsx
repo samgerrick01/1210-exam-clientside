@@ -88,13 +88,7 @@ const index: FC = () => {
                         }}
                     >{`No Trash`}</div>
                 )}
-                {trash.length > 0 && (
-                    <TaskList
-                        trash={trash}
-                        handleAllTrash={handleAllTrash}
-                        search={search}
-                    />
-                )}
+                {trash.length > 0 && <TaskList trash={trash} search={search} />}
             </div>
             {contextHolder}
         </div>

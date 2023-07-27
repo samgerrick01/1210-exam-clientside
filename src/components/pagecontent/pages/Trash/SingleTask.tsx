@@ -4,10 +4,9 @@ import moment from 'moment'
 
 interface Props {
     item: TaskModel
-    handleAllTrash: () => Promise<void>
 }
 
-const SingleTask: FC<Props> = ({ item, handleAllTrash }) => {
+const SingleTask: FC<Props> = ({ item }) => {
     const date = moment(item.created_date).format('MMM DD, YYYY, h:mm A')
 
     return (
