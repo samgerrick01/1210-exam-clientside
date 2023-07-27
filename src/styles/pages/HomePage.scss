@@ -1,0 +1,8 @@
+@import '../variables.scss';
+
+.homepage {
+    display: flex;
+    flex: 1;
+    background: var(--bg_main);
+    color: var(--color_main);
+}

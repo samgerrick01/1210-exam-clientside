@@ -1,0 +1,10 @@
+@import '../variables.scss';
+
+.userhome {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background: var(--bg_main);
+    color: var(--color_main);
+}

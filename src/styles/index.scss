@@ -1,0 +1,26 @@
+@import './variables.scss';
+
+@import './components/NavBar.scss';
+@import './components/Footer.scss';
+@import './pages/HomePage.scss';
+@import './pages/UserHomePage.scss';
+@import './components/SideMenu.scss';
+@import './components/Pages.scss';
+
+* {
+    transition: all 0.1s ease-in-out;
+    margin: 0;
+    padding: 0;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Raleway', sans-serif;
+    height: 100vh;
+    width: 100vw;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}

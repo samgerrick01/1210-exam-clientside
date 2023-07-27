@@ -1,0 +1,59 @@
+$break_points: (
+    'xs': 0,
+    'sm': 576px,
+    'md': 768px,
+    'lg': 992px,
+    'xl': 1200px,
+    'xxl': 1400px,
+);
+
+:root {
+    --bg_nav: #bababa;
+    --color_nav: #000;
+    --bg_main: #e1e1e1;
+    --color_main: #000;
+}
+
+[data-theme='dark'] {
+    --bg_nav: #111111;
+    --color_nav: #fff;
+    --bg_main: #00203fff;
+    --color_main: #fff;
+    --color_secondary: #adefd1ff;
+}
+
+@mixin xs {
+    @media (min-width: map-get($break_points, 'xs')) {
+        @content;
+    }
+}
+
+@mixin sm {
+    @media (min-width: map-get($break_points, 'sm')) {
+        @content;
+    }
+}
+
+@mixin md {
+    @media (min-width: map-get($break_points, 'md')) {
+        @content;
+    }
+}
+
+@mixin lg {
+    @media (min-width: map-get($break_points, 'lg')) {
+        @content;
+    }
+}
+
+@mixin xl {
+    @media (min-width: map-get($break_points, 'xl')) {
+        @content;
+    }
+}
+
+@mixin xxl {
+    @media (min-width: map-get($break_points, 'xxl')) {
+        @content;
+    }
+}

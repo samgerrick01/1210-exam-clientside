@@ -1,0 +1,30 @@
+@import '../variables.scss';
+
+.navbar {
+    display: flex;
+    height: 80px;
+    background-color: var(--bg_nav);
+    color: var(--color_nav);
+
+    > .container {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px;
+        font-family: 'Anton', sans-serif;
+
+        > .title {
+            font-size: 3.5rem;
+
+            @include xs {
+                display: none;
+            }
+
+            @include md {
+                display: flex;
+                font-size: 2.5rem;
+            }
+        }
+    }
+}
