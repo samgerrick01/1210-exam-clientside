@@ -2,7 +2,84 @@
 
 .homepage {
     display: flex;
+    flex-direction: column;
     flex: 1;
     background: var(--bg_main);
     color: var(--color_main);
+    padding: 54px;
+
+    & :where(.css-dev-only-do-not-override-txh9fw)[class^='ant-typography'],
+    :where(.css-dev-only-do-not-override-txh9fw)[class*=' ant-typography'] {
+        font-family: 'Raleway', sans-serif;
+        color: var(--color_secondary);
+    }
+
+    > p {
+        font-size: 24px;
+
+        @include xs {
+            font-size: 18px;
+        }
+
+        @include sm {
+            font-size: 20px;
+        }
+
+        @include md {
+            font-size: 22px;
+        }
+
+        @include lg {
+            font-size: 24px;
+        }
+    }
+
+    > .p-margin {
+        @include xs {
+            margin-bottom: 50px;
+        }
+
+        @include lg {
+            margin-bottom: 100px;
+        }
+
+        @include xl {
+            margin-bottom: 200px;
+        }
+    }
+
+    > .btn-wraps-home {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @include xs {
+            width: 100%;
+        }
+
+        > .btnsss {
+            display: flex;
+            width: 50%;
+            justify-content: space-between;
+            align-items: center;
+
+            @include xs {
+                width: 100%;
+                gap: 18px;
+                flex-direction: column;
+            }
+
+            @include md {
+                flex-direction: row;
+            }
+
+            @include lg {
+                width: 70%;
+            }
+
+            @include xl {
+                width: 50%;
+            }
+        }
+    }
 }

@@ -31,7 +31,7 @@ const index: FC = () => {
     }
 
     const handleDelete = async () => {
-        const res = await deleteTrash({ email: 'Sam' })
+        const res = await deleteTrash({ email: authUser()?.user?.email })
         if (res === 'Delete Successfully!') {
             messageApi.success('All Trash Deleted!', 3)
             handleAllTrash()
