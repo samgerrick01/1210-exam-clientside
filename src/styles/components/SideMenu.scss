@@ -41,6 +41,15 @@
         }
     }
 
+    & :where(.css-txh9fw).ant-menu-light.ant-menu-root.ant-menu-inline,
+    :where(.css-txh9fw).ant-menu-light
+        > .ant-menu.ant-menu-root.ant-menu-inline,
+    :where(.css-txh9fw).ant-menu-light.ant-menu-root.ant-menu-vertical,
+    :where(.css-txh9fw).ant-menu-light
+        > .ant-menu.ant-menu-root.ant-menu-vertical {
+        border-inline-end: 1px solid var(--color_main);
+    }
+
     &
         :where(
             .css-dev-only-do-not-override-txh9fw
@@ -53,6 +62,16 @@
     :where(.css-dev-only-do-not-override-txh9fw).ant-menu-light
         > .ant-menu.ant-menu-root.ant-menu-vertical {
         border-inline-end: 1px solid var(--color_main);
+    }
+
+    &
+        :where(.css-txh9fw).ant-menu-light:not(.ant-menu-horizontal)
+        .ant-menu-item:not(.ant-menu-item-selected):hover,
+    :where(.css-txh9fw).ant-menu-light
+        > .ant-menu:not(.ant-menu-horizontal)
+        .ant-menu-item:not(.ant-menu-item-selected):hover {
+        background-color: rgb(94, 145, 94);
+        color: rgb(255, 255, 255);
     }
 
     &
