@@ -45,6 +45,10 @@
             justify-content: center;
             width: 100%;
 
+            & :where(.css-txh9fw).ant-btn.ant-btn-lg {
+                width: 250px;
+            }
+
             & :where(.css-dev-only-do-not-override-txh9fw).ant-btn.ant-btn-lg {
                 width: 250px;
             }
