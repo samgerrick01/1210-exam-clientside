@@ -7,9 +7,9 @@ import Trash from './pages/Trash'
 const index: FC = () => {
     return (
         <Routes>
-            <Route path="/tasks" element={<Task />} />
-            <Route path="/add-task" element={<AddTask />} />
-            <Route path="/deleted-tasks" element={<Trash />} />
+            <Route path={`/`} element={<Task />} />
+            <Route path={`/add-task`} element={<AddTask />} />
+            <Route path={`/deleted-tasks`} element={<Trash />} />
         </Routes>
     )
 }

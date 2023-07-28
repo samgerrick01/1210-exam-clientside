@@ -20,7 +20,7 @@ const SingleTask: FC<Props> = ({ task, handleAllTask }) => {
     const handleDelete = async (task: TaskModel) => {
         const res = await moveToTrash(task)
         if (res === 'Move to Trash!') {
-            messageApi.success('Moved to Trash!', 3)
+            messageApi.success('Move to Trash!', 3)
             handleAllTask()
         }
     }

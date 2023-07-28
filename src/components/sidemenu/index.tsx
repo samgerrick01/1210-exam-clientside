@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 
 const index: FC = () => {
     const navigate = useNavigate()
+
     return (
         <div className="menu-right">
             <Menu
@@ -16,17 +17,17 @@ const index: FC = () => {
                 selectedKeys={[window.location.pathname]}
                 items={[
                     {
-                        key: '/tasks',
+                        key: '/userpage',
                         label: 'Tasks',
                         icon: <FaTasks />,
                     },
                     {
-                        key: '/add-task',
+                        key: `/userpage/add-task`,
                         label: 'Add Task',
                         icon: <AiOutlineFileAdd />,
                     },
                     {
-                        key: '/deleted-tasks',
+                        key: '/userpage/deleted-tasks',
                         label: 'Trash',
                         icon: <BsTrash />,
                     },

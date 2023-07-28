@@ -3,17 +3,19 @@ import { Typography, Form, Input, message } from 'antd'
 import CustomButton from '../../../Button'
 import { FormModel } from '../../../../models'
 import { addTask } from '../../../../services'
+import { useAuthUser } from 'react-auth-kit'
 
 const { Title } = Typography
 
 const index: FC = () => {
     const [form] = Form.useForm()
+    const authUser = useAuthUser()
     const [messageApi, contextHolder] = message.useMessage()
     const initialValues = {
         taskName: '',
         status: 'To Do',
         createdAt: new Date(),
-        createdBy: 'Sam',
+        createdBy: authUser()?.user?.email,
     }
 
     const [formData, setFormData] = useState<FormModel>(initialValues)

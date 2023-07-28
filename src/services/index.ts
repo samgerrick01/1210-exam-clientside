@@ -37,3 +37,13 @@ export const deleteTrash = async (email: any) => {
     const res = await axios.post(`${API_URL}/deleteTrash`, email)
     return res.data
 }
+
+export const signInUser = async (credentials: any) => {
+    const res = await axios.post(`${API_URL}/login`, credentials)
+    return res.data
+}
+
+export const signUpUser = async (credentials: any) => {
+    const res = await axios.post(`${API_URL}/signup`, credentials)
+    return res.data
+}

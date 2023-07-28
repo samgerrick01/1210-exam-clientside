@@ -9,11 +9,13 @@ import {
 } from '../../../../redux/taskSlice'
 import TaskList from './TaskList'
 import { FaSortDown, FaSortUp, FaRecycle } from 'react-icons/fa'
+import { useAuthUser } from 'react-auth-kit'
 
 const { Title } = Typography
 
 const index: FC = () => {
     const dispatch = useDispatch()
+    const authUser = useAuthUser()
 
     const [isDateReverse, setIsDateReverse] = useState<boolean>(false)
 
@@ -24,7 +26,7 @@ const index: FC = () => {
     const [messageApi, contextHolder] = message.useMessage()
 
     const handleAllTrash = async () => {
-        const res = await getTrash({ email: 'Sam' })
+        const res = await getTrash({ email: authUser()?.user?.email })
         dispatch(getAllTrash(res))
     }
 
