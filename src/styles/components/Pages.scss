@@ -147,14 +147,6 @@
             }
         }
     }
-
-    & h1:where(.css-dev-only-do-not-override-txh9fw).ant-typography,
-    div:where(.css-dev-only-do-not-override-txh9fw).ant-typography-h1,
-    div:where(.css-dev-only-do-not-override-txh9fw).ant-typography-h1
-        > textarea,
-    :where(.css-dev-only-do-not-override-txh9fw).ant-typography h1 {
-        color: var(--color_main);
-    }
 }
 
 .add-task {
@@ -214,14 +206,6 @@
     & label {
         font-size: 24px;
         color: var(--color_secondary);
-    }
-
-    & h1:where(.css-dev-only-do-not-override-txh9fw).ant-typography,
-    div:where(.css-dev-only-do-not-override-txh9fw).ant-typography-h1,
-    div:where(.css-dev-only-do-not-override-txh9fw).ant-typography-h1
-        > textarea,
-    :where(.css-dev-only-do-not-override-txh9fw).ant-typography h1 {
-        color: var(--color_main);
     }
 }
 
@@ -329,4 +313,11 @@
             font-size: 24px;
         }
     }
+}
+
+.title-task {
+    font-size: 24px;
+    color: var(--color_main) !important;
+    margin-bottom: 18px;
+    font-weight: 800;
 }

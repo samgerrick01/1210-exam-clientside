@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react'
-import { Typography, Input, message } from 'antd'
+import { Input, message } from 'antd'
 import { getTrash, deleteTrash } from '../../../../services'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -10,8 +10,6 @@ import {
 import TaskList from './TaskList'
 import { FaSortDown, FaSortUp, FaRecycle } from 'react-icons/fa'
 import { useAuthUser } from 'react-auth-kit'
-
-const { Title } = Typography
 
 const index: FC = () => {
     const dispatch = useDispatch()
@@ -54,13 +52,13 @@ const index: FC = () => {
 
     return (
         <div className="tasks">
-            <Title className="btn-del-all-wrap">
+            <label className="btn-del-all-wrap title-task">
                 Trash
                 <button onClick={handleDelete} className="btn-empty">
                     Empty Now&nbsp;&nbsp;
                     <FaRecycle size={25} />
                 </button>
-            </Title>
+            </label>
             <Input
                 placeholder="Search Task"
                 size="large"

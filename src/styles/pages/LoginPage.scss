@@ -8,14 +8,6 @@
     background: var(--bg_main);
     color: var(--color_main);
 
-    & h1:where(.css-dev-only-do-not-override-txh9fw).ant-typography,
-    div:where(.css-dev-only-do-not-override-txh9fw).ant-typography-h1,
-    div:where(.css-dev-only-do-not-override-txh9fw).ant-typography-h1
-        > textarea,
-    :where(.css-dev-only-do-not-override-txh9fw).ant-typography h1 {
-        color: var(--color_main);
-    }
-
     > .container {
         display: flex;
         width: 40%;

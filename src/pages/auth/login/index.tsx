@@ -1,10 +1,8 @@
 import { FC } from 'react'
-import { Form, Input, Typography, Button, message } from 'antd'
+import { Form, Input, Button, message } from 'antd'
 import { useSignIn } from 'react-auth-kit'
 import { signInUser } from '../../../services'
 import { useNavigate } from 'react-router'
-
-const { Title } = Typography
 
 const index: FC = () => {
     const signIn = useSignIn()
@@ -35,7 +33,7 @@ const index: FC = () => {
     return (
         <div className="loginpage">
             <div className="container">
-                <Title>Login Page</Title>
+                <label className="title-task">Login Page</label>
                 <Form onFinish={handleSubmit} autoComplete="off">
                     <label>Email:</label>
                     <Form.Item

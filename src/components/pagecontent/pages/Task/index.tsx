@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react'
-import { Typography, Input } from 'antd'
+import { Input } from 'antd'
 import { getTasks } from '../../../../services'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -10,8 +10,6 @@ import {
 import TaskList from './TaskList'
 import { FaSortDown, FaSortUp } from 'react-icons/fa'
 import { useAuthUser } from 'react-auth-kit'
-
-const { Title } = Typography
 
 const index: FC = () => {
     const dispatch = useDispatch()
@@ -44,7 +42,7 @@ const index: FC = () => {
 
     return (
         <div className="tasks">
-            <Title>All Tasks</Title>
+            <label className="title-task">All Tasks</label>
             <Input
                 placeholder="Search Task"
                 size="large"

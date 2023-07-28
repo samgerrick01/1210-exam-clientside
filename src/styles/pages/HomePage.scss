@@ -8,10 +8,18 @@
     color: var(--color_main);
     padding: 54px;
 
-    & :where(.css-dev-only-do-not-override-txh9fw)[class^='ant-typography'],
-    :where(.css-dev-only-do-not-override-txh9fw)[class*=' ant-typography'] {
+    > .title-home {
         font-family: 'Raleway', sans-serif;
         color: var(--color_secondary);
+        font-size: 50px;
+    }
+
+    > .title-home-content {
+        margin: 18px 0;
+
+        font-family: 'Raleway', sans-serif;
+        color: var(--color_secondary);
+        font-size: 30px;
     }
 
     > p {
@@ -79,6 +87,11 @@
 
             @include xl {
                 width: 50%;
+            }
+
+            > .or-label {
+                font-size: 24px;
+                color: var(--color_secondary);
             }
         }
     }

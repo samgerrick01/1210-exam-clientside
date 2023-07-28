@@ -1,24 +1,20 @@
 import { FC } from 'react'
-import { Typography } from 'antd'
 
 import Button from '../../components/Button'
 import { useNavigate } from 'react-router'
-
-const { Title } = Typography
 
 const index: FC = () => {
     const navigate = useNavigate()
 
     return (
         <div className="homepage">
-            <Title>Hello, Welcome</Title>
+            <label className="title-home">Hello, Welcome</label>
 
-            <Title level={3}>
+            <label className="title-home-content">
                 This is a sample Task Management System for my Exam in 1210
                 Services Inc.
-            </Title>
+            </label>
 
-            <Title level={4}></Title>
             <p>
                 Hi I'm Sam, I'm a front end developer with more than 3 years of
                 experience in web development. I've worked on a variety of
@@ -40,9 +36,7 @@ const index: FC = () => {
                     <span onClick={() => navigate('/login')}>
                         <Button width="250px">Signin</Button>
                     </span>
-                    <Title style={{ margin: '0' }} level={3}>
-                        OR
-                    </Title>
+                    <label className="or-label">OR</label>
                     <span onClick={() => navigate('/signup')}>
                         <Button width="250px">Signup</Button>
                     </span>

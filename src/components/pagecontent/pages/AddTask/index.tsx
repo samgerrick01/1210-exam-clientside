@@ -1,11 +1,9 @@
 import { FC, useState } from 'react'
-import { Typography, Form, Input, message } from 'antd'
+import { Form, Input, message } from 'antd'
 import CustomButton from '../../../Button'
 import { FormModel } from '../../../../models'
 import { addTask } from '../../../../services'
 import { useAuthUser } from 'react-auth-kit'
-
-const { Title } = Typography
 
 const index: FC = () => {
     const [form] = Form.useForm()
@@ -30,7 +28,7 @@ const index: FC = () => {
     }
     return (
         <div className="add-task">
-            <Title>Add Task</Title>
+            <label className="title-task">Add Task</label>
 
             <div className="form-container">
                 <Form

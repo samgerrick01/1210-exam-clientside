@@ -1,9 +1,7 @@
 import { FC } from 'react'
-import { Form, Input, Typography, Button, message } from 'antd'
+import { Form, Input, Button, message } from 'antd'
 import { signUpUser } from '../../../services'
 import { useNavigate } from 'react-router'
-
-const { Title } = Typography
 
 const index: FC = () => {
     const navigate = useNavigate()
@@ -24,7 +22,7 @@ const index: FC = () => {
     return (
         <div className="loginpage">
             <div className="container">
-                <Title>Signup Page</Title>
+                <label className="title-task">Signup Page</label>
                 <Form onFinish={handleSubmit} autoComplete="off">
                     <label>Nickname:</label>
                     <Form.Item
