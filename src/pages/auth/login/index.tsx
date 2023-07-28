@@ -3,18 +3,24 @@ import { Form, Input, Button, message } from 'antd'
 import { useSignIn } from 'react-auth-kit'
 import { signInUser } from '../../../services'
 import { useNavigate } from 'react-router'
+import { useDispatch } from 'react-redux'
+import { loadingOff, loadingOn } from '../../../redux/loadingSlice'
 
 const index: FC = () => {
     const signIn = useSignIn()
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const [messageApi, contextHolder] = message.useMessage()
 
     const handleSubmit = async (values: any) => {
+        dispatch(loadingOn())
         const res = await signInUser(values)
         if (res?.message === 'Email or Password is not Match!') {
+            dispatch(loadingOff())
             messageApi.warning(res.message)
         } else if (res?.message === 'Login Success!') {
+            dispatch(loadingOff())
             messageApi.success(res.message)
             signIn({
                 token: res.token,
@@ -24,8 +30,10 @@ const index: FC = () => {
             })
             navigate('/userpage')
         } else if (res?.message === 'Wrong Password!') {
+            dispatch(loadingOff())
             messageApi.warning(res.message)
         } else {
+            dispatch(loadingOff())
             messageApi.error('Internal Error!')
         }
     }

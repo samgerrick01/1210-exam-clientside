@@ -2,19 +2,26 @@ import { FC } from 'react'
 import { Form, Input, Button, message } from 'antd'
 import { signUpUser } from '../../../services'
 import { useNavigate } from 'react-router'
+import { useDispatch } from 'react-redux'
+import { loadingOff, loadingOn } from '../../../redux/loadingSlice'
 
 const index: FC = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const [messageApi, contextHolder] = message.useMessage()
 
     const handleSubmit = async (values: any) => {
+        dispatch(loadingOn())
         const res = await signUpUser(values)
         if (res?.message === 'Email is already taken!') {
+            dispatch(loadingOff())
             messageApi.warning(res.message)
         } else if (res?.message === 'Signup Success!') {
+            dispatch(loadingOff())
             messageApi.success(res.message)
         } else {
+            dispatch(loadingOff())
             messageApi.error('Internal Error!')
         }
     }

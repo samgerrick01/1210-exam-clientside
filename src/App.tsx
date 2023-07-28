@@ -7,6 +7,7 @@ import HomePage from './pages/home'
 import LoginPage from './pages/auth/login'
 import SignupPage from './pages/auth/signup'
 import UserPage from './pages/user/homepage'
+import Loading from './components/loading'
 
 import { RequireAuth } from 'react-auth-kit'
 
@@ -34,6 +35,7 @@ const App: FC = () => {
                     }
                 />
             </Routes>
+            <Loading />
             <Footer />
         </div>
     )

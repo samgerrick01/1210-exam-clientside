@@ -10,6 +10,7 @@ import {
 import TaskList from './TaskList'
 import { FaSortDown, FaSortUp, FaRecycle } from 'react-icons/fa'
 import { useAuthUser } from 'react-auth-kit'
+import { loadingOff, loadingOn } from '../../../../redux/loadingSlice'
 
 const index: FC = () => {
     const dispatch = useDispatch()
@@ -24,15 +25,19 @@ const index: FC = () => {
     const [messageApi, contextHolder] = message.useMessage()
 
     const handleAllTrash = async () => {
+        dispatch(loadingOn())
         const res = await getTrash({ email: authUser()?.user?.email })
         dispatch(getAllTrash(res))
+        dispatch(loadingOff())
     }
 
     const handleDelete = async () => {
+        dispatch(loadingOn())
         const res = await deleteTrash({ email: authUser()?.user?.email })
         if (res === 'Delete Successfully!') {
             messageApi.success('All Trash Deleted!', 3)
             handleAllTrash()
+            dispatch(loadingOff())
         }
     }
 

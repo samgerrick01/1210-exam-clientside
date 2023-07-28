@@ -10,6 +10,7 @@ import {
 import TaskList from './TaskList'
 import { FaSortDown, FaSortUp } from 'react-icons/fa'
 import { useAuthUser } from 'react-auth-kit'
+import { loadingOff, loadingOn } from '../../../../redux/loadingSlice'
 
 const index: FC = () => {
     const dispatch = useDispatch()
@@ -22,8 +23,10 @@ const index: FC = () => {
     const [search, setSearch] = useState<string>('')
 
     const handleAllTask = async () => {
+        dispatch(loadingOn())
         const res = await getTasks({ email: authUser()?.user?.email })
         dispatch(getAllTask(res))
+        dispatch(loadingOff())
     }
 
     const handleSort = () => {
