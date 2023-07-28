@@ -9,15 +9,26 @@ import SignupPage from './pages/auth/signup'
 import UserPage from './pages/user/homepage'
 import Loading from './components/loading'
 
-import { RequireAuth } from 'react-auth-kit'
+import { useNavigate } from 'react-router-dom'
+
+import { RequireAuth, useIsAuthenticated } from 'react-auth-kit'
 
 const App: FC = () => {
+    const navigate = useNavigate()
+    const isAuthenticated = useIsAuthenticated()
     const [state, setState] = useState<boolean>(false)
     const [theme, setTheme] = useState<string>('light')
 
     useEffect(() => {
         setTheme(localStorage.getItem('theme') || 'light')
     }, [state])
+
+    useEffect(() => {
+        if (isAuthenticated()) {
+            navigate('/userpage')
+        }
+    }, [isAuthenticated()])
+
     return (
         <div className="App">
             <NavBar theme={theme} setState={setState} state={state} />

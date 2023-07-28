@@ -9,6 +9,22 @@
     background: var(--bg_main);
     color: var(--color_main);
 
+    & :where(.css-txh9fw).ant-menu-inline.ant-menu-root,
+    :where(.css-txh9fw).ant-menu-vertical.ant-menu-root {
+        background: var(--bg_main);
+        color: var(--color_main);
+        width: 250px;
+
+        @include xs {
+            display: none;
+        }
+
+        @include lg {
+            display: block;
+            width: 200px;
+        }
+    }
+
     & :where(.css-dev-only-do-not-override-txh9fw).ant-menu-light,
     :where(.css-dev-only-do-not-override-txh9fw).ant-menu-light > .ant-menu {
         background: var(--bg_main);

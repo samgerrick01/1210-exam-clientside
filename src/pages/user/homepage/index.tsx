@@ -23,16 +23,19 @@ const index: FC = () => {
                 className="menu-right-responsive"
             >
                 <div className="container">
-                    <div onClick={() => navigate('/tasks')} className="item">
+                    <div onClick={() => navigate('/userpage')} className="item">
                         <FaTasks />
                         &nbsp;&nbsp;&nbsp;Tasks
                     </div>
-                    <div onClick={() => navigate('/add-task')} className="item">
+                    <div
+                        onClick={() => navigate('/userpage/add-task')}
+                        className="item"
+                    >
                         <AiOutlineFileAdd />
                         &nbsp;&nbsp;&nbsp;Add Task
                     </div>
                     <div
-                        onClick={() => navigate('/deleted-tasks')}
+                        onClick={() => navigate('/userpage/deleted-tasks')}
                         className="item"
                     >
                         <BsTrash />
