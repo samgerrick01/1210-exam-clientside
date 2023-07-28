@@ -49,7 +49,10 @@ const index: FC = () => {
                         ]}
                     >
                         <Input
-                            style={{ width: '100%' }}
+                            style={{
+                                width: '100%',
+                                textTransform: 'capitalize',
+                            }}
                             placeholder="Task Name"
                             size="large"
                             value={formData.taskName}

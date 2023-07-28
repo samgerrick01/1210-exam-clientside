@@ -3,7 +3,7 @@ import { TaskModel } from '../../../../models'
 import moment from 'moment'
 import { FaTrash, FaEdit, FaCheck } from 'react-icons/fa'
 import { changeStatus, moveToTrash, updateTask } from '../../../../services'
-import { message, Input } from 'antd'
+import { message, Input, Modal } from 'antd'
 import { useDispatch } from 'react-redux'
 import { loadingOff, loadingOn } from '../../../../redux/loadingSlice'
 
@@ -35,15 +35,17 @@ const SingleTask: FC<Props> = ({ task, handleAllTask }) => {
     }
 
     useEffect(() => {
-        inputRef?.current?.focus()
+        setInterval(() => {
+            inputRef?.current?.focus()
+        }, 1000)
     }, [isEdit])
 
     const handleSubmitEdit = async () => {
         dispatch(loadingOn())
         const res = await updateTask(data.id, data.task_name)
         if (res === 'Update Successfully!') {
-            dispatch(loadingOff())
             setIsEdit(false)
+            dispatch(loadingOff())
             messageApi.success('Update Successfully!', 3)
             handleAllTask()
         }
@@ -71,35 +73,7 @@ const SingleTask: FC<Props> = ({ task, handleAllTask }) => {
     return (
         <div className="table-body">
             {contextHolder}
-            <div className="table-body-item">
-                {!isEdit ? (
-                    task.task_name
-                ) : (
-                    <div
-                        style={{
-                            display: 'flex',
-                            position: 'relative',
-                            width: '90%',
-                        }}
-                    >
-                        <Input
-                            size="large"
-                            ref={inputRef}
-                            style={{ paddingRight: '70px', width: '100%' }}
-                            value={data.task_name}
-                            onChange={(e) =>
-                                setData({ ...data, task_name: e.target.value })
-                            }
-                        />
-                        <button
-                            onClick={handleSubmitEdit}
-                            className="div-btn cursor-pointer"
-                        >
-                            Save
-                        </button>
-                    </div>
-                )}
-            </div>
+            <div className="table-body-item">{task.task_name}</div>
             <div className="table-body-item">{task.status}</div>
             <div className="table-body-item">{date}</div>
             <div className="table-body-item">
@@ -110,6 +84,31 @@ const SingleTask: FC<Props> = ({ task, handleAllTask }) => {
                 <FaEdit className="icon" onClick={handleEdit} />
                 <FaTrash className="icon" onClick={() => handleDelete(task)} />
             </div>
+            <Modal
+                className="edit-modal"
+                open={isEdit}
+                closable={false}
+                footer={false}
+                centered
+            >
+                <label>Update</label>
+                <Input
+                    size="large"
+                    ref={inputRef}
+                    style={{
+                        paddingRight: '70px',
+                        width: '100%',
+                        textTransform: 'capitalize',
+                    }}
+                    value={data.task_name}
+                    onChange={(e) =>
+                        setData({ ...data, task_name: e.target.value })
+                    }
+                />
+                <button onClick={handleSubmitEdit} className="edit-btn-style">
+                    Save
+                </button>
+            </Modal>
         </div>
     )
 }
