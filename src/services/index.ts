@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { FormModel, TaskModel } from '../models'
 
-const API_URL = 'http://localhost:5000'
+// const API_URL = 'http://localhost:5000'
+const API_URL = 'https://kind-sweatshirt-seal.cyclic.app'
 
 export const addTask = async (task: FormModel) => {
     const res = await axios.post(`${API_URL}/add-task`, task)
