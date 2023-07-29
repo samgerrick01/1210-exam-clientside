@@ -26,9 +26,9 @@ const SingleTask: FC<Props> = ({ task, handleAllTask }) => {
         dispatch(loadingOn())
         const res = await moveToTrash(task, authUser()?.token)
         if (res === 'Move to Trash!') {
-            dispatch(loadingOff())
             messageApi.success('Move to Trash!', 3)
             handleAllTask()
+            dispatch(loadingOff())
         }
     }
 
