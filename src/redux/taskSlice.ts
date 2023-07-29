@@ -51,6 +51,13 @@ const taskSlice = createSlice({
                 trash: orderBy(state.trash, ['created_date'], ['asc']),
             }
         },
+        clearAllState(state) {
+            return {
+                ...state,
+                tasks: [],
+                trash: [],
+            }
+        },
     },
 })
 
@@ -61,6 +68,7 @@ export const {
     getAllTrash,
     sortByDateTrash,
     sortByDateTrashRev,
+    clearAllState,
 } = taskSlice.actions
 
 export default taskSlice.reducer

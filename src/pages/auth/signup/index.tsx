@@ -8,6 +8,7 @@ import { loadingOff, loadingOn } from '../../../redux/loadingSlice'
 const index: FC = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const [form] = Form.useForm()
 
     const [messageApi, contextHolder] = message.useMessage()
 
@@ -20,6 +21,7 @@ const index: FC = () => {
         } else if (res?.message === 'Signup Success!') {
             dispatch(loadingOff())
             messageApi.success(res.message)
+            form.resetFields()
         } else {
             dispatch(loadingOff())
             messageApi.error('Internal Error!')
@@ -30,7 +32,7 @@ const index: FC = () => {
         <div className="loginpage">
             <div className="container">
                 <label className="title-task">Signup Page</label>
-                <Form onFinish={handleSubmit} autoComplete="off">
+                <Form onFinish={handleSubmit} autoComplete="off" form={form}>
                     <label>Nickname:</label>
                     <Form.Item
                         name="nickname"

@@ -1,6 +1,6 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { Form, Input, Button, message } from 'antd'
-import { useSignIn } from 'react-auth-kit'
+import { useSignIn, useIsAuthenticated } from 'react-auth-kit'
 import { signInUser } from '../../../services'
 import { useNavigate } from 'react-router'
 import { useDispatch } from 'react-redux'
@@ -10,6 +10,7 @@ const index: FC = () => {
     const signIn = useSignIn()
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const isAuthenticated = useIsAuthenticated()
 
     const [messageApi, contextHolder] = message.useMessage()
 
@@ -26,9 +27,8 @@ const index: FC = () => {
                 token: res.token,
                 expiresIn: 10000,
                 tokenType: 'Bearer',
-                authState: { user: res.user },
+                authState: { user: res.user, token: res.token },
             })
-            navigate('/userpage')
         } else if (res?.message === 'Wrong Password!') {
             dispatch(loadingOff())
             messageApi.warning(res.message)
@@ -37,6 +37,12 @@ const index: FC = () => {
             messageApi.error('Internal Error!')
         }
     }
+
+    useEffect(() => {
+        if (isAuthenticated()) {
+            navigate('/userpage')
+        }
+    }, [isAuthenticated()])
 
     return (
         <div className="loginpage">

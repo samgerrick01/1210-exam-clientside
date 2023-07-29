@@ -26,14 +26,20 @@ const index: FC = () => {
 
     const handleAllTrash = async () => {
         dispatch(loadingOn())
-        const res = await getTrash({ email: authUser()?.user?.email })
+        const res = await getTrash(
+            { email: authUser()?.user?.email },
+            authUser()?.token,
+        )
         dispatch(getAllTrash(res))
         dispatch(loadingOff())
     }
 
     const handleDelete = async () => {
         dispatch(loadingOn())
-        const res = await deleteTrash({ email: authUser()?.user?.email })
+        const res = await deleteTrash(
+            { email: authUser()?.user?.email },
+            authUser()?.token,
+        )
         if (res === 'Delete Successfully!') {
             messageApi.success('All Trash Deleted!', 3)
             handleAllTrash()

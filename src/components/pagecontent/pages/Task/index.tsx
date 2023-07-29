@@ -24,7 +24,10 @@ const index: FC = () => {
 
     const handleAllTask = async () => {
         dispatch(loadingOn())
-        const res = await getTasks({ email: authUser()?.user?.email })
+        const res = await getTasks(
+            { email: authUser()?.user?.email },
+            authUser()?.token,
+        )
         dispatch(getAllTask(res))
         dispatch(loadingOff())
     }

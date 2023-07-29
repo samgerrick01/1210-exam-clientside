@@ -19,7 +19,7 @@ const index: FC = () => {
     const [formData, setFormData] = useState<FormModel>(initialValues)
 
     const onFinish = async () => {
-        const res = await addTask(formData)
+        const res = await addTask(formData, authUser()?.token)
         if (res === 'Added Successfully!') {
             messageApi.success('Task Added Successfully!', 3)
             form.resetFields()

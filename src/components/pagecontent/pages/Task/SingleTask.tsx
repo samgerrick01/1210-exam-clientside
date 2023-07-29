@@ -6,6 +6,7 @@ import { changeStatus, moveToTrash, updateTask } from '../../../../services'
 import { message, Input, Modal } from 'antd'
 import { useDispatch } from 'react-redux'
 import { loadingOff, loadingOn } from '../../../../redux/loadingSlice'
+import { useAuthUser } from 'react-auth-kit'
 
 interface Props {
     task: TaskModel
@@ -13,6 +14,7 @@ interface Props {
 }
 
 const SingleTask: FC<Props> = ({ task, handleAllTask }) => {
+    const authUser = useAuthUser()
     const dispatch = useDispatch()
     const date = moment(task.created_date).format('MMM DD, YYYY, h:mm A')
     const [messageApi, contextHolder] = message.useMessage()
@@ -22,7 +24,7 @@ const SingleTask: FC<Props> = ({ task, handleAllTask }) => {
 
     const handleDelete = async (task: TaskModel) => {
         dispatch(loadingOn())
-        const res = await moveToTrash(task)
+        const res = await moveToTrash(task, authUser()?.token)
         if (res === 'Move to Trash!') {
             dispatch(loadingOff())
             messageApi.success('Move to Trash!', 3)
@@ -42,7 +44,7 @@ const SingleTask: FC<Props> = ({ task, handleAllTask }) => {
 
     const handleSubmitEdit = async () => {
         dispatch(loadingOn())
-        const res = await updateTask(data.id, data.task_name)
+        const res = await updateTask(data.id, data.task_name, authUser()?.token)
         if (res === 'Update Successfully!') {
             setIsEdit(false)
             dispatch(loadingOff())
@@ -56,14 +58,14 @@ const SingleTask: FC<Props> = ({ task, handleAllTask }) => {
         if (task?.status.toLocaleLowerCase() === 'to do') {
             dispatch(loadingOn())
             newStatus = 'In Progress'
-            await changeStatus(task.id, newStatus)
+            await changeStatus(task.id, newStatus, authUser()?.token)
             messageApi.success('Changed!', 3)
             handleAllTask()
             dispatch(loadingOff())
         } else if (task?.status.toLocaleLowerCase() === 'in progress') {
             dispatch(loadingOn())
             newStatus = 'Completed'
-            await changeStatus(task.id, newStatus)
+            await changeStatus(task.id, newStatus, authUser()?.token)
             messageApi.success('Changed!', 3)
             handleAllTask()
             dispatch(loadingOff())

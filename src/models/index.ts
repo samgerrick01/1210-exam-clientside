@@ -12,3 +12,10 @@ export interface TaskModel {
     created_date: Date
     created_by: string
 }
+
+export interface UserModel {
+    id: number
+    email: string
+    nickname: string
+    role: string
+}

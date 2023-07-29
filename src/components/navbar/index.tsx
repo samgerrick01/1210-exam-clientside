@@ -5,6 +5,8 @@ import LogoLight from '../../assets/sam-logo1.svg'
 import { useAuthUser, useIsAuthenticated, useSignOut } from 'react-auth-kit'
 import { Button } from 'antd'
 import { useNavigate } from 'react-router'
+import { useDispatch } from 'react-redux'
+import { clearAllState } from '../../redux/taskSlice'
 
 interface Props {
     state: boolean
@@ -17,6 +19,7 @@ const index: FC<Props> = ({ state, setState, theme }) => {
     const isAuthenticated = useIsAuthenticated()
     const navigate = useNavigate()
     const signOut = useSignOut()
+    const dispatch = useDispatch()
 
     return (
         <div className="navbar">
@@ -41,6 +44,7 @@ const index: FC<Props> = ({ state, setState, theme }) => {
                         <Button
                             onClick={() => {
                                 signOut()
+                                dispatch(clearAllState())
                                 navigate('/')
                             }}
                             type="primary"
