@@ -17,7 +17,7 @@ export const addTask = async (task: FormModel, token: string) => {
     }
 }
 
-export const getTasks = async (email: any, token: string) => {
+export const getTasks = async (email: { email: string }, token: string) => {
     try {
         const res = await axios.post(`${API_URL}/tasks`, email, {
             headers: {
@@ -30,7 +30,7 @@ export const getTasks = async (email: any, token: string) => {
     }
 }
 
-export const getTrash = async (email: any, token: string) => {
+export const getTrash = async (email: { email: string }, token: string) => {
     try {
         const res = await axios.post(`${API_URL}/trash`, email, {
             headers: {
@@ -98,7 +98,7 @@ export const updateTask = async (
     }
 }
 
-export const deleteTrash = async (email: any, token: string) => {
+export const deleteTrash = async (email: { email: string }, token: string) => {
     try {
         const res = await axios.post(`${API_URL}/deleteTrash`, email, {
             headers: {
@@ -111,7 +111,10 @@ export const deleteTrash = async (email: any, token: string) => {
     }
 }
 
-export const signInUser = async (credentials: any) => {
+export const signInUser = async (credentials: {
+    email: string
+    password: string
+}) => {
     try {
         const res = await axios.post(`${API_URL}/login`, credentials)
         return res.data
@@ -120,7 +123,12 @@ export const signInUser = async (credentials: any) => {
     }
 }
 
-export const signUpUser = async (credentials: any) => {
+export const signUpUser = async (credentials: {
+    email: string
+    password: string
+    nickname: string
+    confirm_password: string
+}) => {
     try {
         const res = await axios.post(`${API_URL}/signup`, credentials)
         return res.data

@@ -12,7 +12,12 @@ const index: FC = () => {
 
     const [messageApi, contextHolder] = message.useMessage()
 
-    const handleSubmit = async (values: any) => {
+    const handleSubmit = async (values: {
+        email: string
+        password: string
+        nickname: string
+        confirm_password: string
+    }) => {
         dispatch(loadingOn())
         const res = await signUpUser(values)
         if (res?.message === 'Email is already taken!') {
