@@ -3,18 +3,21 @@ import { Form, Input, Button, message } from 'antd'
 import { useSignIn, useIsAuthenticated } from 'react-auth-kit'
 import { signInUser } from '../../../services'
 import { useNavigate } from 'react-router'
-import { useDispatch } from 'react-redux'
 import { loadingOff, loadingOn } from '../../../redux/loadingSlice'
+import { useAppDispatch } from '../../../redux/app'
 
 const index: FC = () => {
     const signIn = useSignIn()
     const navigate = useNavigate()
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const isAuthenticated = useIsAuthenticated()
 
     const [messageApi, contextHolder] = message.useMessage()
 
-    const handleSubmit = async (values: any) => {
+    const handleSubmit = async (values: {
+        email: string
+        password: string
+    }) => {
         dispatch(loadingOn())
         const res = await signInUser(values)
         if (res?.message === 'Email or Password is not Match!') {

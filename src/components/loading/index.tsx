@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import { Modal, Spin } from 'antd'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '../../redux/app'
 
 const index: FC = () => {
-    const { load } = useSelector((state: any) => state.loading)
+    const { load } = useAppSelector((state) => state.loading)
     return (
         <div>
             <Modal

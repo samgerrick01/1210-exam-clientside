@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { TaskModel } from '../models'
 import { orderBy } from 'lodash'
 
@@ -15,13 +15,13 @@ const taskSlice = createSlice({
     name: 'tasks',
     initialState,
     reducers: {
-        getAllTask(state, action) {
+        getAllTask(state, action: PayloadAction<TaskModel[]>) {
             return {
                 ...state,
                 tasks: orderBy(action.payload, ['created_date'], ['asc']),
             }
         },
-        getAllTrash(state, action) {
+        getAllTrash(state, action: PayloadAction<TaskModel[]>) {
             return {
                 ...state,
                 trash: orderBy(action.payload, ['created_date'], ['asc']),

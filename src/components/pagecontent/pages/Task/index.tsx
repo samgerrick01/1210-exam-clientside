@@ -1,7 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 import { Input } from 'antd'
 import { getTasks } from '../../../../services'
-import { useDispatch, useSelector } from 'react-redux'
 import {
     getAllTask,
     sortByDateTask,
@@ -11,14 +10,15 @@ import TaskList from './TaskList'
 import { FaSortDown, FaSortUp } from 'react-icons/fa'
 import { useAuthUser } from 'react-auth-kit'
 import { loadingOff, loadingOn } from '../../../../redux/loadingSlice'
+import { useAppDispatch, useAppSelector } from '../../../../redux/app'
 
 const index: FC = () => {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const authUser = useAuthUser()
 
     const [isDateReverse, setIsDateReverse] = useState<boolean>(false)
 
-    const { tasks } = useSelector((state: any) => state.tasks)
+    const { tasks } = useAppSelector((state) => state.tasks)
 
     const [search, setSearch] = useState<string>('')
 

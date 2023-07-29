@@ -2,12 +2,12 @@ import { FC } from 'react'
 import { Form, Input, Button, message } from 'antd'
 import { signUpUser } from '../../../services'
 import { useNavigate } from 'react-router'
-import { useDispatch } from 'react-redux'
 import { loadingOff, loadingOn } from '../../../redux/loadingSlice'
+import { useAppDispatch } from '../../../redux/app'
 
 const index: FC = () => {
     const navigate = useNavigate()
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const [form] = Form.useForm()
 
     const [messageApi, contextHolder] = message.useMessage()

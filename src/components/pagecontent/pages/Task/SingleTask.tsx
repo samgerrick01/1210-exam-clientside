@@ -3,10 +3,11 @@ import { TaskModel } from '../../../../models'
 import moment from 'moment'
 import { FaTrash, FaEdit, FaCheck } from 'react-icons/fa'
 import { changeStatus, moveToTrash, updateTask } from '../../../../services'
-import { message, Input, Modal } from 'antd'
-import { useDispatch } from 'react-redux'
+import { message, Input, Modal, Form } from 'antd'
 import { loadingOff, loadingOn } from '../../../../redux/loadingSlice'
 import { useAuthUser } from 'react-auth-kit'
+import { useAppDispatch } from '../../../../redux/app'
+import Button from '../../../../components/Button'
 
 interface Props {
     task: TaskModel
@@ -15,7 +16,7 @@ interface Props {
 
 const SingleTask: FC<Props> = ({ task, handleAllTask }) => {
     const authUser = useAuthUser()
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const date = moment(task.created_date).format('MMM DD, YYYY, h:mm A')
     const [messageApi, contextHolder] = message.useMessage()
     const [isEdit, setIsEdit] = useState<boolean>(false)
@@ -92,24 +93,29 @@ const SingleTask: FC<Props> = ({ task, handleAllTask }) => {
                 closable={false}
                 footer={false}
                 centered
+                onCancel={() => setIsEdit(false)}
             >
                 <label>Update</label>
-                <Input
-                    size="large"
-                    ref={inputRef}
-                    style={{
-                        paddingRight: '70px',
-                        width: '100%',
-                        textTransform: 'capitalize',
-                    }}
-                    value={data.task_name}
-                    onChange={(e) =>
-                        setData({ ...data, task_name: e.target.value })
-                    }
-                />
-                <button onClick={handleSubmitEdit} className="edit-btn-style">
-                    Save
-                </button>
+                <Form autoComplete="off" onFinish={handleSubmitEdit}>
+                    <Form.Item name="task_name" initialValue={data.task_name}>
+                        <Input
+                            size="large"
+                            ref={inputRef}
+                            style={{
+                                paddingRight: '70px',
+                                width: '100%',
+                                textTransform: 'capitalize',
+                            }}
+                            value={data.task_name}
+                            onChange={(e) =>
+                                setData({ ...data, task_name: e.target.value })
+                            }
+                        />
+                    </Form.Item>
+                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                        <Button width="250px">Save</Button>
+                    </div>
+                </Form>
             </Modal>
         </div>
     )
